@@ -23,7 +23,7 @@ ko-dic-compress = ["lindera/ko-dic-compress"]
 cc-cedict-compress = ["lindera/cc-cedict-compress"]
 
 [dependencies]
-tantivy = "0.19.2"
+tantivy = { git = "https://github.com/quickwit-oss/tantivy/", rev = "41af70799"}
 
 lindera = "0.23.0"
 

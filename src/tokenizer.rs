@@ -1,6 +1,6 @@
 use std::collections::VecDeque;
 
-use tantivy::tokenizer::{BoxTokenStream, Token, Tokenizer};
+use tantivy::tokenizer::{Token, Tokenizer};
 
 use lindera::tokenizer::Tokenizer as LTokenizer;
 
@@ -53,7 +53,8 @@ impl Default for LinderaTokenizer {
 }
 
 impl Tokenizer for LinderaTokenizer {
-    fn token_stream<'a>(&self, text: &'a str) -> BoxTokenStream<'a> {
+    type TokenStream<'a> = LinderaTokenStream;
+    fn token_stream<'a>(&self, text: &'a str) -> LinderaTokenStream {
         let tokens = match self.tokenizer.tokenize(text) {
             Ok(lindera_tokens) => lindera_tokens
                 .iter()
@@ -67,19 +68,18 @@ impl Tokenizer for LinderaTokenizer {
                 .collect::<VecDeque<_>>(),
             Err(_err) => VecDeque::new(),
         };
-
-        BoxTokenStream::from(LinderaTokenStream::new(tokens))
+        LinderaTokenStream::new(tokens)
     }
 }
 
 #[cfg(test)]
 #[cfg(feature = "ipadic")]
 mod tests {
-    use tantivy::tokenizer::{BoxTokenStream, Token, Tokenizer};
+    use tantivy::tokenizer::{Token, Tokenizer, TokenStream};
 
-    use crate::tokenizer::LinderaTokenizer;
+    use crate::{tokenizer::LinderaTokenizer, stream::LinderaTokenStream};
 
-    fn test_helper(mut tokenizer: BoxTokenStream) -> Vec<Token> {
+    fn test_helper(mut tokenizer: LinderaTokenStream) -> Vec<Token> {
         let mut tokens: Vec<Token> = vec![];
         tokenizer.process(&mut |token: &Token| tokens.push(token.clone()));
         tokens
