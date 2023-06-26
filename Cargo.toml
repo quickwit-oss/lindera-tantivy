@@ -23,7 +23,7 @@ ko-dic-compress = ["lindera-tokenizer/ko-dic-compress"]
 cc-cedict-compress = ["lindera-tokenizer/cc-cedict-compress"]
 
 [dependencies]
-tantivy-tokenizer-api = "0.1.1"
+tantivy-tokenizer-api = { git = "https://github.com/quickwit-oss/tantivy/", branch = "fmassot/add-box-token-filter-and-refactor" }
 
 lindera-core = "0.25.0"
 lindera-dictionary = "0.25.0"
@@ -31,7 +31,7 @@ lindera-tokenizer = "0.25.0"
 
 [dev-dependencies]
 criterion = { version = "0.5.1", features = ["html_reports"] }
-tantivy = "0.20.2"
+tantivy = { git = "https://github.com/quickwit-oss/tantivy/", branch = "fmassot/add-box-token-filter-and-refactor" }
 
 [[bench]]
 name = "bench"
