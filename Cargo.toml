@@ -23,7 +23,7 @@ ko-dic-compress = ["lindera-tokenizer/ko-dic-compress"]
 cc-cedict-compress = ["lindera-tokenizer/cc-cedict-compress"]
 
 [dependencies]
-tantivy-tokenizer-api = "0.1.1"
+tantivy-tokenizer-api = { git = "https://github.com/quickwit-oss/tantivy/", rev = "3c30066" }
 
 lindera-core = "0.25.0"
 lindera-dictionary = "0.25.0"
