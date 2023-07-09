@@ -25,9 +25,9 @@ cc-cedict-compress = ["lindera-tokenizer/cc-cedict-compress"]
 [dependencies]
 tantivy-tokenizer-api = { git = "https://github.com/quickwit-oss/tantivy/", rev = "3c30066" }
 
-lindera-core = { git = "https://github.com/lindera-morphology/lindera", rev = "1fd5848" }
-lindera-dictionary = { git = "https://github.com/lindera-morphology/lindera", rev = "1fd5848" }
-lindera-tokenizer = { git = "https://github.com/lindera-morphology/lindera", rev = "1fd5848" }
+lindera-core = "0.26.0"
+lindera-dictionary = "0.26.0"
+lindera-tokenizer = "0.26.0"
 
 [dev-dependencies]
 criterion = { version = "0.5.1", features = ["html_reports"] }
